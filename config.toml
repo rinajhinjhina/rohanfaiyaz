@@ -1,4 +1,6 @@
-baseurl = "https://username.github.io"
+baseurl = "https://reverent-kilby-5056a7.netlify.com"
+relativeURLs = true
+uglyURLs = true
 DefaultContentLanguage = "en"
 title = "Rohan Faiyaz Khan"
 theme = "beautifulhugo"
