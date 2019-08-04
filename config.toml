@@ -1,4 +1,4 @@
-baseurl = "https://www.rohanfaiyaz.com"
+baseurl = "https://reverent-kilby-5056a7.netlify.com/"
 relativeURLs = true
 uglyURLs = true
 DefaultContentLanguage = "en"
@@ -10,6 +10,8 @@ pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
+enableRobotsTXT = true
+canonifyURLs = true
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
 #disqusShortname = "XXX"
