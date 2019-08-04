@@ -1,0 +1,7 @@
+# netlify.toml
+
+[[redirects]]
+  from = "https://<your-site-name>.netlify.com/*"
+  to = "https://www.<your-custom-domain>/:splat"
+  status = 301
+  force = true #COMMENT: ensure that we always redirect
