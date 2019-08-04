@@ -3,6 +3,7 @@ DefaultContentLanguage = "en"
 title = "Rohan Faiyaz Khan"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
+enableEmoji = true
 pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true
@@ -14,7 +15,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-  subtitle = "Full stack web developer and tech enthusiast in Dhaka, Bangladesh"
+  subtitle = "Full stack web developer"
   logo = "img/me.jpg" # Expecting square dimensions
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
