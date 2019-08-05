@@ -1,4 +1,6 @@
 # These rules will change if you change your site’s custom domains or HTTPS settings
 
+https://www.rohanfaiyaz.com/* https://rohanfaiyaz.com/:splat 301!
+
 # Redirect default Netlify subdomain to primary domain
-https://reverent-kilby-5056a7.netlify.com/* https://www.rohanfaiyaz.com/:splat 301!
+https://reverent-kilby-5056a7.netlify.com/* https://rohanfaiyaz.com/:splat 301!

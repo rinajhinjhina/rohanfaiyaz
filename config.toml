@@ -1,4 +1,4 @@
-baseurl = "https://www.rohanfaiyaz.com/"
+baseurl = "https://rohanfaiyaz.com/"
 relativeURLs = true
 uglyURLs = true
 DefaultContentLanguage = "en"
