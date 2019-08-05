@@ -47,7 +47,8 @@ canonifyURLs = true
 #  desc = "Hexagon"
 
 [Author]
-  website = "yourwebsite.com"
+  website = "rohanfaiyaz.com"
+  dev = "rohanfaiyazkhan"
   email = "rohankhan170@gmail.com"
   github = "rohanfaiyazkhan"
   twitter = "rohanfaiyaz"

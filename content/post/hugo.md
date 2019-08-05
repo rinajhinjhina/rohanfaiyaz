@@ -4,6 +4,7 @@ subtitle: A blazing fast static site generator!
 date: 2019-08-03
 tags: [hugo, static]
 bigimg: [{src: "/img/hugo.png", desc: "Hugo"}]
+author: Rohan Faiyaz Khan
 ---
 
 If you are unfamiliar with the concept of static site generators, they allow you to take your content (either as markdown or as input from a CMS) and output a static version of your website.
