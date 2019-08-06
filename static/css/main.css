@@ -299,6 +299,12 @@ img {
 	.navbar-custom .nav .navlinks-container.show-children .navlinks-children {
 		display: block;
 	}
+
+	.social ul > li {
+		padding-left: 0;
+		padding-right: 0;
+		font-size: 14px;
+	}
 }
 
 @media only screen and (min-width: 768px) {
