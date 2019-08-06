@@ -22,6 +22,7 @@ canonifyURLs = true
   subtitle = "Full stack web developer"
   logo = "img/me.jpg" # Expecting square dimensions
   favicon = "img/favicon.ico"
+  brand = "img/brand.svg"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
