@@ -13,7 +13,7 @@ tags: [nest, crud, postgres]
 
 Essentially __Nest__ takes inspiration from enterprise level frameworks such as the .NET Framework while also offering the simplicity and flexibility of building a simple __Node.js__ server with __Express__. Nest is inspired heavily from Angular and seeks to provide similar abstractions to the backend. 
 
-That's all fine and good, but _why should you use Nest_?
+That's all fine and good, but __why should you use Nest__?
 
 Well let me preface this by first saying that if have a preferred backend of choice in another language such as Django, Laravel or .NET, Nest won't offer any new tools or tricks. However if you have been building Node servers before you might have experienced the frustration of setting up the same application over and over again. Or you might have had difficulties maintaining the app as scale grew. _Nest_ offers so many advantages over starting a project from scratch that I believe it will soon become a default for Node CRUD applications and APIs. Over this article I will try my best to show what those advantages are.
 
@@ -39,14 +39,14 @@ We can test the installation by using `yarn start`. This will start the app by d
 
 This part will assume you have Postgres installed. If not, install Postgres on OS, for instance you can use the [official installer for Windows](https://www.postgresql.org/download/windows/), [use Homebrew on MacOS](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3) or [apt on Ubuntu](https://wiki.postgresql.org/wiki/Apt).
 
-Once we have Postgres installed, we will want to create a database. We can do this using a GUI tool such as [PGAdmin](https://www.pgadmin.org/) or simply using Postgres CLI. I am using Linux so the process will look like this.
+Once we have Postgres installed, we will want to create a database. We can do this using a GUI tool such as [PGAdmin](https://www.pgadmin.org/) or simply using Postgres CLI. I am using Linux so I will use `sudo` to switch to the _postgres_ user, which is the default superuser. We need the super user in order to call the the `createdb` command.
 
 ```bash
 $ sudo -u postgres psql
 postgres=# createdb rohan
 postgres=# \q
 ```
-The command `psql` opens the Postgres CLI. We open it with the _postgres_ user as this is the default UNIX superuser. `\q` quits the Postgres CLI. We can set a password to our local user so we can securely access  the local database.
+The command `psql` opens the Postgres CLI. `\q` quits the Postgres CLI. We can set a password to our local user so we can securely access  the local database.
 
 ```bash
 $ psql
@@ -195,4 +195,4 @@ You can test out the new endpoints in Postman or curl.
 
 ## That's it!
 
-I don't know about you but when I first learned to make a REST API there was a lot more boilerplate code to figure out. Nest offers just the right amount of high level abstractions to make building APIs a fun process again because you will be focus on what really matters- the endpoints and the entities, Furthermore, NestJS's [official docs](https://docs.nestjs.com/) has comprehensive recipes on integrating with GraphQL (_a post on that coming soon_) and others. If you are building Node based applications then this is definitely something you should all look at.
+I don't know about you but when I first learned to make a REST API there was a lot more boilerplate code to figure out. Nest offers just the right amount of high level abstractions to make building APIs a fun process again because you will be focus on what really matters- the endpoints and the entities, Furthermore, NestJS's [official docs](https://docs.nestjs.com/) has comprehensive recipes on integrating with GraphQL (_a post on that coming soon_) and others. If you are a NodeJS developer, NestJS is something very exciting to keep your eye on.
