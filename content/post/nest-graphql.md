@@ -14,7 +14,7 @@ But this is a problem. What if the frontend requirements change and we need an e
 
 Essentially, a REST api is too _low level_. We need something that offers a higher level of abstraction and that is __GraphQL__.
 
-__GraphQL__ is a query language specification created originally by Facebook as a solution to the problems described above. GraphQL offers a way for frontends to describe the exact data need and the shape of the data. The data is defined on the backend as a GraphQL schema. A GraphQL request (known as a _Query_) looks like this:
+__GraphQL__ is a query language specification created originally by Facebook as a solution to the problems described above. GraphQL offers a way for frontends to describe the exact data needed and the shape of the data. The data is defined on the backend as a GraphQL schema. A GraphQL request (known as a _Query_) looks like this:
 
 ```gpl
 {
@@ -41,7 +41,7 @@ This returns a JSON response that looks like this:
 You might notice that the data sent back follows the exact shape of the query. What about adding data though? We do that using GraphQL _Mutations_ which look like this:
 
 ```gpl
-mutatuin{
+mutation{
     addPokemon(name: "Scorbunny", types: "Fire") {
         id,
         name,
@@ -192,13 +192,13 @@ export class inputPokemon {
 
 ```
 
-Next we will set up our Pokemon service class. _Services_ are a type of _provider_, are a fundamental part in NestJS because they handle the task of __injecting dependencies__. We can create service directly using Nest CLI.
+Next we will set up our Pokemon service class. _Services_ are a type of _provider_, and they are a fundamental part in NestJS because they handle the task of __injecting dependencies__. We can create service directly using Nest CLI.
 
 ```bash
 $ nest generate service pokemon
 ```
 
-All providers are preceded by the `@Injectable` decorator. Services are usually where we inject our data repository from our ORM, and set up interactions with our data. In our case we will create two methods, `addPokemon` and `getPokemon`.
+All providers are preceded by the `@Injectable` decorator. Services are usually where we inject our data repository from our ORM, and set up interactions with our data. In our case we will create two methods, `createPokemon` and `getPokemon`.
 
 ```ts
 // src/pokemon/pokemon.service.ts
@@ -230,7 +230,7 @@ export class PokemonService {
 }
 ```
 
-Next we will make a _resolver_ class. Resolvers are what resolve a GraphQL request to a function. While there are many ways to make a GraphQL resolver, we will use the `@Resolver` decorator from the NestJS GraphQL library. In our resolver class, we will map our Query and Mutation to the functions created in our service class.
+Next we will make a _resolver_ class. Resolvers are what resolves a GraphQL request to a function. While there are many ways to make a GraphQL resolver, we will use the `@Resolver` decorator from the NestJS GraphQL library. In our resolver class, we will map our Query and Mutation to the functions created in our service class.
 
 ```ts
 // src/pokemon/pokemon.resolver.ts
