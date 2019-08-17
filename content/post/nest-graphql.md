@@ -3,7 +3,7 @@ title: "NestJS GraphQL API with TypeORM and Postgres"
 date: 2019-08-11T11:25:19+06:00
 subtitle: Reap the rewards of GraphQL in a NestJS app
 author: Rohan Faiyaz Khan
-tags: [nestjs. typeorm, grahql, postgres]
+tags: [nestjs, typeorm, grahql, postgres]
 ---
 
 {{<figure src="/img/nestjs-graphql.png" thumb="-thumb">}}

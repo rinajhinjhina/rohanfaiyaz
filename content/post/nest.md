@@ -4,7 +4,7 @@ subtitle: A robust and scalable web framework for backends
 date: 2019-08-08T10:30:04+06:00
 author: Rohan Faiyaz Khan
 bigimg: [{src: "/img/nest-background.png", desc: "Nest"}]
-tags: [nest, crud, postgres]
+tags: [nestjs, crud, postgres]
 ---
 
 [NestJS](https://nestjs.com/) is a fantastic framework for writing robust web backends. According to the docs:
