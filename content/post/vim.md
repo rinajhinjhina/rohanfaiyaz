@@ -3,7 +3,8 @@ title: "Efficiency in the Editor : How I overcame my fear of Vim"
 date: 2019-08-29T17:53:54+06:00
 author: Rohan Faiyaz Khan
 tags: [vim, beginners, productivity]
-bigimg: [{src: "/img/vim.jpg", desc: "Vim", link-thumb: "/img/vim.jpg"}]
+bigimg: [{src: "/img/vim.jpg", desc: "Vim"}]
+share_img: "/img/vim.jpg"
 ---
 
  A colleague at my previous job was once looking at my screen and mentioned that he was impressed with how quickly I was moving around within my code editor. Granted he was not a developer and came from a non-technical background, but his comment surprised me as speed apart from that of typing was not something that I had given much thought before. Navigating through my workspace using a combination of arrow keys, find, go-to-line and the navigation keys such as Home and End were things I had learned simply through practice. 
