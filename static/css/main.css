@@ -900,4 +900,5 @@ ul.share li:hover .fab {
 video {
 	display: block;
 	margin: 20px auto;
+	overflow: hidden;
 }
