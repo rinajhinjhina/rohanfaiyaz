@@ -896,3 +896,8 @@ ul.share li:hover .fab {
 .well {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
 }
+
+video {
+	display: block;
+	margin: 20px auto;
+}
