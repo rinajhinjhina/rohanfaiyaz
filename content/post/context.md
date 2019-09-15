@@ -8,13 +8,13 @@ author: "Rohan Faiyaz Khan"
 
 ## The pains of growing state
 
-In learning React, one of the first challenges I faced was figuring out state management. State is a vital part of any application that is any more complex than a simple blog or brochure site. React has a fantastic toolset to manage component level state both in the case of functional components with hooks, and class based components. However global state is a bit of a different story.
+In learning React, one of the first challenges I faced was figuring out state management. State is a vital part of any application that has more complexity than a simple blog or brochure site. React has a fantastic toolset to manage component level state both in the case of functional components with hooks, and class based components. However global state is a bit of a different story.
 
 Almost every advanced feature such as authentication, shopping carts, bookmarks etc. heavily rely on state that multiple components need to be aware of. This can be done by passing state through props but as an application grows this gets complicated very fast. We end up having to pipe state through intermediary components and any change in the shape of the state needs to reflected in all of these components. We also end up with a bunch of code unrelated to the concern of the intermediary component, so we learn to ignore it. And if Uncle Bob taught me anything, the code we ignore is where the bugs hide. 
 
 ## The solution: Redux
 
-[ Redux ](https://redux.js.org/) was born out of the problem of global state handling. Built by Dan Abramov and his team, Redux provided a global store independant of local state that individual components could access. Furthermore it comes with some high level abstractons for dealing with state, such as the state reducer pattern.
+[ Redux ](https://redux.js.org/) was born out of the problem of global state handling. Built by [ Dan Abramov ](https://overreacted.io) and his team, Redux provided a global store independant of local state that individual components could access. Furthermore it comes with some high level abstractons for dealing with state, such as the state reducer pattern.
 
 _Wait, slow down, the state reducer what now?_
 
@@ -41,15 +41,15 @@ Redux also provides us with the action creator pattern, which is simply a way to
 
 While redux is great and I personally am a big fan of it, it has its fair share of detractors. 
 
-- The first problem a lot of people have is that it is very boilerplate-y. This is especially apparent when you have an app that initially doesn't need global state, and then suddenly you realize you do and then \*_BOOM_\* 200+ lines added in one commit.
+- The first problem a lot of people have is that it is very boilerplate-y. This is especially apparent when you have an app that initially doesn't need global state, and then later on you realize you do and then \***_BOOM_**\* 200+ lines added in one commit. And every time global state has to be pulled in for a component, this extra boilerplate has to added in.
 
-- Redux is opinionated imposes limitations. Your state has to be represented as objects and arrays. Your logic for changing states have to be pure functions. These are limitations that most apps could do without.
+- Redux is opinionated and imposes limitations. Your state has to be represented as objects and arrays. Your logic for changing states have to be pure functions. These are limitations that most apps could do without.
 
-- Redux has a learning curve of its own. This true for me personally, because React seemed very fun as a beginner until I hit the wall of Redux. These advanced high level patterns are something a beginner is not likely to appreciate.
+- Redux has a learning curve of its own. This true for me personally, because React seemed very fun as a beginner until I hit the wall of Redux. These advanced high level patterns are something a beginner is not likely to appreciate or understand.
 
-- Using Redux means adding about an extra 10kb to the bundle size. 
+- Using Redux means adding about an extra 10kb to the bundle size, which is something we would all like to avoid if possible. 
 
-Several other state management libraries have propped up such as MobX to solve the shortcomings of Redux, but each have their own trade-offs. Furthermore, all of them are external dependencies that people would rather not bulk up in their bundle size. In fact the reason redux became so popular was because there was no official solution to this problem blessed by the _React core team_.
+Several other state management libraries have propped up such as MobX to solve the shortcomings of Redux, but each have their own trade-offs. Furthermore, all of them are still external dependencies that would bulk up the bundle size.
 
 _But surely something this important has a native implementation? Right?_
 
@@ -69,10 +69,10 @@ All we will be doing is logging in (using a fake authentication method wrapped i
 
 The first thing we need to do to use context is `React.createContext(defaultValue)`. This is a function that returns an object with two components:
 
-- `myContext.Provider` - A component that provide the context to all its child elements. If you have used Redux before, this does the exact same thing as the `Provider` component in the react-redux package
+- `myContext.Provider` - A component that provides the context to all its child elements. If you have used Redux before, this does the exact same thing as the `Provider` component in the react-redux package
 - `myContext.Consumer` - A component that is used to consume a context. As we shall soon see however, this will not be needed when we use the `useContext` hook
 
-Lets use this knowledge to create a store for our state. Notice below that the `defaultValue` parameter passed to `createContext` is an empty object. This is because this parameter is optional, and is only read when a Provider is not used.
+Lets use this knowledge to create a store for our state. 
 
 ```jsx
 // store.js
@@ -85,7 +85,9 @@ export const Provider = authContext.Provider;
 export const Consumer = authContext.Consumer;
 export default authContext;
 ```
-Next we have to wrap our application in the `Provider` so that we can use this global state. `Provider` needs a prop called `value` which is the value of the state being shared. We can combine that with the `useContext` hook to retrieve this value.
+Notice below that the `defaultValue` parameter passed to `createContext` is an empty object. This is because this parameter is optional, and is only read when a Provider is not used.
+
+Next we have to wrap our application in the `Provider` so that we can use this global state. `Provider` needs a prop called `value` which is the value of the state being shared. We can then use the `useContext` hook in the child component to retrieve this value.
 
 ```jsx
 function App(){
@@ -101,7 +103,7 @@ function ChildComponent(){
     return <div>{contextValue}</div>
 }
 ```
-However you might notice a problem with this method. We can only change the value of the state in the component containing the Provider. What if we want to trigger a state change for our child component?
+However you might notice a problem with this method. We can only change the value of the state in the component containing the Provider. What if we want to trigger a state change from our child component?
 
 Well remember the reducer state pattern I talked about above? We can use it here! React provides a handy `useReducer` hook which takes in a `reducer` function and an `initialState` value and returns the current state and a dispatch method. If you have used redux before, this is the exact same reducer pattern we would observe there. Then we have pass the return value of the `useReducer` hook as the value inside `<Provider>`.
 
@@ -260,9 +262,9 @@ const Hello = () => {
 export default Hello;
 ```
 
-## And that's it! 
+## And there you have it
 
-We now have a function context-based state management system. To summarize the steps needed to create it:
+We now have a fully functioning context-based state management system. To summarize the steps needed to create it:
 
 - We created a store using `React.createContext()`
 - We created a reducer using the `useReducer` hook
@@ -271,4 +273,4 @@ We now have a function context-based state management system. To summarize the s
 
 You might be asking now whether this can completely replace Redux. Well, maybe. You might notice that we had to implement our own abstractions and structure when using the Context API. If your team is already used to the Redux way of doing things, then I don't see a lot of value in switching. But if you or your team does want to break away from Redux I would certainly recommend giving this a try.
 
-Thank you for reading this far, and I hope you found this useful.
+Thank you for reading, and I hope you found this post useful.
