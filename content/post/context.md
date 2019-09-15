@@ -4,6 +4,7 @@ date: 2019-09-14T11:46:58+06:00
 bigimg: [{src: "/img/bicycle.jpg", desc: "Photo by Pop and Zebra"}]
 share_img: "/img/bicycle.jpg"
 author: "Rohan Faiyaz Khan"
+tags: [react, context, state]
 ---
 
 ## The pains of growing state
