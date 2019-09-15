@@ -1,6 +1,6 @@
 baseurl = "https://rohanfaiyaz.com/"
 relativeURLs = true
-uglyURLs = true
+uglyURLs = false
 DefaultContentLanguage = "en"
 title = "Rohan Faiyaz Khan"
 theme = "beautifulhugo"
@@ -28,7 +28,6 @@ canonifyURLs = true
   rss = true
   comments = true
   readingTime = true
-  wordCount = true
   useHLJS = true
   socialShare = true
   delayDisqus = true
