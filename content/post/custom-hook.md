@@ -4,7 +4,6 @@ date: 2019-10-05T18:31:28+06:00
 author: "Rohan Faiyaz Khan"
 bigimg: [{src: "/img/hook.jpg", desc: "https://unsplash.com/photos/f2LYxnmnKxI"}]
 tags: ["react", "hooks"]
-draft: true
 ---
 
 Now that its been a year since React hooks has been released, I can safely say that I absolutely love them and cannot imagine writing React components without them anymore.
