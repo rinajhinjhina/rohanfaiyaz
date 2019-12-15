@@ -1,38 +1,16 @@
 ---
-title: "Creating a resuable multistep form component in React using Declarative Composition"
+title: "Creating a reusable multistep form component in React"
 date: 2019-10-22T23:18:44+06:00
 draft: true
 author: Rohan Faiyaz Khan
+bigimg: [{src: "/img/steps.jpg", desc: "https://unsplash.com/photos/tXxyqjaXvRs"}]
 tags: ["react", "multistep-form", "declarative", "composition"]
 ---
 
-## What on earth is declarative composition?
+## Declarative Composition
 
-__Declarative composition__ is a pattern fundamental to React. It has been a focus by the core team for good reason, as a pattern it allows component reusability without sacrificing flexibility. But what does it actually mean?
+If you hear these two words thrown around a lot but are not sure what they mean, then don't worry cause you are not alone. Declarative composition is a core philosophy that went into the design of React and how the React team wants you to write components, but don't worry, it's a simpler than people make it out to be.
 
-Well there are two parts to the phrase. __Declarative__ programming is a programming paradigm that expresses logic without describing its implementation. That's a bit of a mouthful, but in the context of React it basically means we want to be to see what our components do by looking at them, and not by digging into their implementation. Think of this component below.
+To put it simply, _declarative_ in React means we should be able to tell what our components are doing by looking at how they are being used. The more closely our components resemble HTML elements, the less time we take to figure out what the component is doing and the easier it is to share components among team members. _Composition_ is a pattern where we compose our larger components of smaller atomic units. This can be facilitated through smaller components or through hooks. If you work with React for a while, you will find that a lot of React's design has been built to facilitate _declarative_ components that can be _composed_.
 
-```jsx
-<Slider components={[ <img src={image1} />, <img src={ image2 } />, <img src={ image3 } />]} slideFunction={smoothSlide} />
-```
-
-This component, while functionally works just fine, has two problems. Firstly, its use of image tags as a prop consisting of an array of child components is very unclear. If you encounter this line while skimming through code, you would have to stop and do a double take to figure what is going on and that is exactly what we don't want. 
-
-Secondly, we are passing a function to the `slideFunction` prop. This is an example of an opposing programming paradigm, _imperative_ programming. The idea of being declarative is to hide away our implementation details such as the slide function. It is the sort of thing that the component should handle, not the consumer of the component.
-
-Let's rewrite this component such that we can do this:
-
-```jsx
-<Slider linearOrSmooth="smooth">
-	<img src={image1} />
-	<img src={image2} />
-	<img src={image3} />
-<Slider />
-```
-
-It is very clear from looking at this that the `img` tags are children of the slider component. It feels obvious because it is read the way HTML is read. And while you could most certainly suggest a better name than `linearOrSmooth`, it does a little better than our example above because it describes exactly what the prop does and hides the implementation details away.
-
-This is what we strive to achieve by being declarative. We will undoubtedly come back to read our code again and again, and more likely than not, other people will also be reading our code. It helps therefore when we can understand what our code is doing by looking at it. This also helps with testing because as Kent C. Dodds puts it best, we want to avoid testing implementation details and instead test what our component does. That becomes a lot easier if we hide our implementation details away.
-
-__Composition__ is a design pattern that encourages smaller encapsulated components that can be used to _compose_ larger, more complex components. 
-
+The best way to showcase is to write a component with declarative compostion in mind. A few weeks back I ran into a problem where I needed a multistep form component. You might be quite familiar with forms like this which are broken into multiple steps, and the state is persisted between the steps. It is an important UX consideration to not overload your users with too much information at once. 
