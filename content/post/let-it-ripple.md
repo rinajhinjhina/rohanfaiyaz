@@ -14,9 +14,9 @@ We have all seen the ripple effect animation which was part of the [material des
 
 ## Rippling in React
 
-While the ripple effect is perfectly doable in Vanilla JS, I wanted a way to integrate it with my React components. The easiest way would be to use [Material-UI](https://material-ui.com/) which is a popular UI library. This is a very good idea in general if you want a solid UI library that generates UI out of the box. However for a small project it makes little sense to learn to work with a large library just to achieve one effect. There had to be a way to do with a UI library.
+While the ripple effect is perfectly doable in Vanilla JS, I wanted a way to integrate it with my React components. The easiest way would be to use [Material-UI](https://material-ui.com/) which is a popular UI library. This is a very good idea in general if you want a solid UI library that generates UI out of the box. However for a small project it makes little sense to learn to work with a large library just to achieve one effect. I figured there had to be a way to do without a UI library.
 
-I looked through a lot of projects implementing this over Codepen and Codesandbox and compiled some of the best methods. The ripple effect is possible on any web framework because it is achieved through a clever bit of CSS.
+I looked through a lot of projects implementing something similar this over Github, Codepen and Codesandbox and took inspiration from some of the best ones. The ripple effect is possible on any web framework because it is achieved through a clever bit of CSS.
 
 __For advanced readers who want to go straight to the code and skip the explanation behind it, feel free to browse it in this [Code Sandbox](https://codesandbox.io/s/react-material-design-ripple-effect-kn1tr).__
 
@@ -67,7 +67,7 @@ This is my implementation of the CSS for this effect.
 }
 ```
 
-The `overflow: hidden` property prevents the ripple from _rippling_ out of the container, which is in this case a button. The ripple is a circie (`border-radius: 100%`) which will start at 0% size and 75% opacity and scale to 200% its size as it fades out. 
+The `overflow: hidden` property prevents the ripple from _rippling_ out of the container. The ripple is a circie (`border-radius: 100%`) which starts at a small size and grows large as it fades out. The growing and fade out animations are achieved by manipulating `transform: scale` and `opacity` in our ripple animation. 
 
 We will however need to dynamically provide a few styles using Javascript. We need to find the positional coordinates i.e. `top` and `left`, which are based on where the user clicked, and the actual `height` and `width`, which depend on the size of the container.
 
@@ -164,7 +164,7 @@ const Ripple = ({ duration = 850, color = "#fff" }) => {
 
 The above code uses a bit of the Browser DOM API. `getBoundClientRect()` allows us to get the longest edge of the container, and the `x` and `y` coordinates relative to the document.  This along with `MouseEvent.pageX` and `MouseEvent.pageY` allows us to calculate the `x` and `y` coordinates of the mouse relative to the container. If you want to learn more about how these work, there are much more detailed explanations for [getBoundClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect), [MouseEvent.pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) and [MouseEvent.pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) at the wonderful MDN Web Docs.
 
-This allows us to create our ripple container and ripples.
+Using this, we can now __render our array of ripples__.
 
 ```jsx
 return (
@@ -192,9 +192,9 @@ return (
 
 With this we are _done_ adding a ripple effect! However, there is one more small thing we will need to do with this component and that is __clean the ripples after they are done animating__. This is to prevent stale elements from cluttering up the DOM.
 
-We can do this by implementing a debouncer inside a custom effect hook. I will opt for `useLayoutEffect` over `useEffect` for this. While the differences between the two merit an entire blog post of its own, it is suffice to know that `useEffect` fires after render and repaint while `useLayoutEffect`fires after render but before repaint. This is important here as we are doing something that has immediate impact on the DOM. You can read more about this [here](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect).
+We can do this by implementing a debouncer inside a custom effect hook. I will opt for `useLayoutEffect` over `useEffect` for this. While the differences between the two merit an entire blog post of its own, it is suffice to know that `useEffect` fires after render and repaint while `useLayoutEffect`fires after render but before repaint. This is important here as we are doing something that has an immediate impact on the DOM. You can read more about this [here](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect).
 
-Below is our custom hook's implementation and usage where we pass a callback to clear the ripple array. We use a setTimeout that we can reset in order to create a simple _debouncer_. Essentially everytime we create a new ripple, the timer will reset. Notice that the timeout duration is much bigger than our ripple duration.
+Below is our custom hook's implementation and usage where we pass a callback to clear the ripple array. We use a timeout that we can reset in order to create a simple _debouncer_. Essentially everytime we create a new ripple, the timer will reset. Notice that the timeout duration is much bigger than our ripple duration.
 
 ```jsx
 import React, { useState, useLayoutEffect } from "react";
@@ -227,7 +227,7 @@ const Ripple = ({ duration = 850, color = "#fff" }) => {
   ...
 ```
 
-Now we are done with our Ripple component. __Let's build a button to implent this__.
+Now we are done with our Ripple component. __Let's build a button to consume it__.
 
 ```jsx
 import React from "react";
