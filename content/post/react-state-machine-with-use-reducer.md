@@ -3,7 +3,8 @@ title: "Turning your React Component into a Finite State Machine With useReducer
 date: 2020-01-25T23:38:01+06:00
 draft: false
 author: "Rohan Faiyaz Khan"
-bigimg: [{src: "/img/steps.jpg", desc: "State machine with use reducer"}]
+bigimg: [{src: "/img/steps.jpg", desc: "State machine with use reducer", link: "https://unsplash.com/photos/tXxyqjaXvRs"}]
+share_img: "/img/steps.jpg"
 tags: ["react", "hooks", "state", "state-machine"]
 ---
 
