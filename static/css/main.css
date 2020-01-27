@@ -631,6 +631,10 @@ footer .theme-by {
 	display: none;
 }
 
+.intro-header.big-img .img-desc a {
+	color: #eee;
+}
+
 .header-section {
 	margin-bottom: 30px;
 }
