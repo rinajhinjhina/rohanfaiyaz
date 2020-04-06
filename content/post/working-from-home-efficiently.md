@@ -23,3 +23,9 @@ Now I was not completely surprised with the response. Even under normal circumst
 Hence I am writing this blog post to try to offer some modicum of helpful tips for everyone in these trying times. We at XenWorks have been trying to make remote work click for us and these are some of the things me and my team do on a daily basis. Hopefully some of these can be useful for you as well.
 
 ### Prepare your space
+
+The first thing one needs to work is a workspace. At an office this obviously isn't a problem but at home, the lines between work and home are very muddy. Two big problems can stem from this. Firstly, and this is a problem we will come back to throughout this post, it is difficult to __switch on__ your work mode. Let me explain.
+
+When you go into your office to start a work day, your brain can clearly differentiate that this is where I work. This triggers your brain's muscle memory for focusing and doing work. At home this line isn't so clear. If you feel like you spend the first few hours of a work day without being able to focus, this could be the reason.
+
+Secondly, even if you can focus there are likely to be interruptions due to your family. 
