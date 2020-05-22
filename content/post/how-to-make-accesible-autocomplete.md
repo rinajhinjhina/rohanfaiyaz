@@ -40,17 +40,16 @@ If this is all you need then great. If not, let's look at a custom albeit harder
 
 So if `<datalist>` doesn't work you will have to devise your own solution using a combination of an input and a list that can be shown and hidden using CSS. Seems simple right? Well there is still a problem we need to consider and that is **accessibility**. When we use a `<select>` element the browser implements accessibility features out of the box, the user than scroll up and down using the arrow keys, and use keyboard controls to open and close the dropdown. Assistive software for users with disabilities know how to announce that the element has a dropdown, and whether or not the dropdown is open.
 
-Using a simple `<input type="text">` tag followed by a `<ul>` list will not give us these benefits out of the box, and so we need to code them in ourselves. The WAI-ARIA widget for an autosuggest is called a **combobox**].
+Using a simple `<input type="text">` tag followed by a `<ul>` list will not give us these benefits out of the box, and so we need to code them in ourselves. The WAI-ARIA widget for an autosuggest is called a **combobox** and the official WAI-ARIA guidelines outline how to implement it while still maintaining accessiblity.
 
-You could perhaps use a library to implement this and that could work but a library might not have every feature you want or have features you don't want. Some of them are also not completely accessible. Even if you are using a library that you like, it is good to learn how it works on the inside.
-
-Before we start I would like to add quickly that I am still new to writing accessible web components and due to the huge variance in screenreader behaviour there may be things that I missed. If you are experienced at accessibility please feel free to suggest improvements.
+Note that you could perhaps use a library to implement this and that could work but a library might not have every feature you want or have features you don't want. Some of them are also not completely accessible. Even if you are using a library that you like, it is good to learn how it works on the inside.
 
 ### Accessibility Requirements
 
 Using the [official WAI-ARIA guidelines as reference](https://www.w3.org/TR/wai-aria-practices/#combobox), we can identify some features that our component needs to have to ensure it is accessible. Ignoring some optional cases or ones that are not applicable to our use case, we can list the requirements as follows.
 
 __1. Aria roles, states and properties__
+
   - The container needs to have `role="combobox"`
   - The input field inside the combobox needs to have `role="textbox"`
   - Combobox element contains or owns an element that has role listbox, tree, grid, or dialog. For our use case, we will be using a listbox
@@ -74,9 +73,9 @@ __2. Keyboard interaction__
     - Any printable character: Returns the focus to the textbox without closing the popup and types the character.
     - `Down Arrow`: Moves focus to and selects the next option. If focus is on the last option, either returns focus to the textbox or does nothing.
     - `Up Arrow`: Moves focus to and selects the previous option. If focus is on the first option, either returns focus to the textbox or does nothing.
-    -  Right Arrow: Returns focus to the textbox without closing the popup and moves the input cursor one character to the right. If the input cursor is on the right-most character, the cursor does not move.
-    - Left Arrow: Returns focus to the textbox without closing the popup and moves the input cursor one character to the left. If the input cursor is on the left-most character, the cursor does not move.
-    - Any printable character: Returns the focus to the textbox without closing the popup and types the character.
+    -  `Right Arrow`: Returns focus to the textbox without closing the popup and moves the input cursor one character to the right. If the input cursor is on the right-most character, the cursor does not move.
+    - `Left Arrow`: Returns focus to the textbox without closing the popup and moves the input cursor one character to the left. If the input cursor is on the left-most character, the cursor does not move.
+    - _Any printable character_: Returns the focus to the textbox without closing the popup and types the character.
 
 ### Implementation
 
